@@ -44,6 +44,14 @@ e.g., count the word count in ```test.txt```
 ![](.tutorial/week6-2.png)
 
 
+To see the guide, run
+```bash
+word_counter --help
+```
+
+![](.tutorial/week6-3.png)
+
+
 ## Run
 
 ### Some Makefile Commands
