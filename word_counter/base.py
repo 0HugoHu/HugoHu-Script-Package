@@ -1,7 +1,7 @@
 """
-ids706_python_template base module.
+word_counter base module.
 
-This is the principal module of the ids706_python_template project.
+This is the principal module of the word_counter project.
 here you put your main classes and objects.
 
 Be creative! do whatever you want!
@@ -14,4 +14,4 @@ and then choose `flask` as template.
 """
 
 # example constant variable
-NAME = "ids706_python_template"
+NAME = "word_counter"

@@ -1,4 +1,4 @@
-"""Python setup.py for ids706_python_template package"""
+"""Python setup.py for word_counter package"""
 import io
 import os
 from setuptools import find_packages, setup
@@ -6,7 +6,7 @@ from setuptools import find_packages, setup
 
 def read(*paths, **kwargs):
     """Read the contents of a text file safely.
-    >>> read("ids706_python_template", "VERSION")
+    >>> read("word_counter", "VERSION")
     '0.1.0'
     >>> read("README.md")
     ...
@@ -30,19 +30,15 @@ def read_requirements(path):
 
 
 setup(
-    name="ids706_python_template",
-    version=read("ids706_python_template", "VERSION"),
-    description="Awesome ids706_python_template created by 0HugoHu",
-    url="https://github.com/0hugohu/IDS706-Python-Template/",
+    name="word_counter",
+    version=read("word_counter", "VERSION"),
+    description="A simple command-line tool that counts the number of words in a text file.",
+    url="https://github.com/nogibjj/HugoHu-Script-Package",
     long_description=read("README.md"),
     long_description_content_type="text/markdown",
     author="Hugo Hu",
     packages=find_packages(exclude=["tests", ".github"]),
     install_requires=read_requirements("requirements.txt"),
-    entry_points={
-        "console_scripts": [
-            "ids706_python_template = ids706_python_template.__main__:main"
-        ]
-    },
+    entry_points={"console_scripts": ["word_counter = word_counter.__main__:main"]},
     extras_require={"test": read_requirements("requirements.txt")},
 )

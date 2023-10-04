@@ -26,21 +26,21 @@ install:          ## Install the project in dev mode.
 
 .PHONY: fmt format
 fmt format:              ## Format code using black & isort.
-	$(ENV_PREFIX)isort ids706_python_template/
-	$(ENV_PREFIX)black -l 79 ids706_python_template/
+	$(ENV_PREFIX)isort word_counter/
+	$(ENV_PREFIX)black -l 79 word_counter/
 	$(ENV_PREFIX)black -l 79 tests/
 
 .PHONY: lint
 lint:             ## Run ruff, black, mypy linters.
-	$(ENV_PREFIX)ruff ids706_python_template/
-	$(ENV_PREFIX)black -l 79 --check ids706_python_template/
+	$(ENV_PREFIX)ruff word_counter/
+	$(ENV_PREFIX)black -l 79 --check word_counter/
 	$(ENV_PREFIX)black -l 79 --check tests/
-	$(ENV_PREFIX)mypy --ignore-missing-imports ids706_python_template/
+	$(ENV_PREFIX)mypy --ignore-missing-imports word_counter/
 
 .PHONY: test
 test: lint        ## Run tests and generate coverage report.
-	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=ids706_python_template -l --tb=short --maxfail=1 tests/
-	#$(ENV_PREFIX)pytest --nbval ids706_python_template/Hugo-Project-1.ipynb
+	$(ENV_PREFIX)pytest -v --cov-config .coveragerc --cov=word_counter -l --tb=short --maxfail=1 tests/
+	#$(ENV_PREFIX)pytest --nbval word_counter/Hugo-Project-1.ipynb
 	$(ENV_PREFIX)coverage xml
 	$(ENV_PREFIX)coverage html
 
@@ -79,9 +79,9 @@ virtualenv:       ## Create a virtual environment.
 release:          ## Create a new tag for release.
 	@echo "WARNING: This operation will create s version tag and push to github"
 	@read -p "Version? (provide the next x.y.z semver) : " TAG
-	@echo "$${TAG}" > ids706_python_template/VERSION
+	@echo "$${TAG}" > word_counter/VERSION
 	@$(ENV_PREFIX)gitchangelog > HISTORY.md
-	@git add ids706_python_template/VERSION HISTORY.md
+	@git add word_counter/VERSION HISTORY.md
 	@git commit -m "release: version $${TAG} 🚀"
 	@echo "creating git tag : $${TAG}"
 	@git tag $${TAG}
@@ -96,7 +96,7 @@ switch-to-poetry: ## Switch to poetry package manager.
 	@poetry init --no-interaction --name=a_flask_test --author=rochacbruno
 	@echo "" >> pyproject.toml
 	@echo "[tool.poetry.scripts]" >> pyproject.toml
-	@echo "ids706_python_template = 'ids706_python_template.__main__:main'" >> pyproject.toml
+	@echo "word_counter = 'word_counter.__main__:main'" >> pyproject.toml
 	@cat requirements.txt | while read in; do poetry add --no-interaction "$${in}"; done
 	@cat requirements-test.txt | while read in; do poetry add --no-interaction "$${in}" --dev; done
 	@poetry install --no-interaction
@@ -104,7 +104,7 @@ switch-to-poetry: ## Switch to poetry package manager.
 	@mv requirements* .github/backup
 	@mv setup.py .github/backup
 	@echo "You have switched to https://python-poetry.org/ package manager."
-	@echo "Please run 'poetry shell' or 'poetry run ids706_python_template'"
+	@echo "Please run 'poetry shell' or 'poetry run word_counter'"
 
 .PHONY: init
 init:             ## Initialize the project based on an application template.
@@ -112,7 +112,7 @@ init:             ## Initialize the project based on an application template.
 
 .PHONY: run
 run:              ## Execute the Python code.
-	$(ENV_PREFIX)python -m ids706_python_template
+	$(ENV_PREFIX)python -m word_counter
 
 # This project has been generated from rochacbruno/python-project-template
 # __author__ = 'rochacbruno'

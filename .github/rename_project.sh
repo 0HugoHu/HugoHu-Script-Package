@@ -30,7 +30,7 @@ do
     echo "Renamed $filename"
 done
 
-mv ids706_python_template $name
+mv word-counter $name
 
 # This command runs only once on GHA!
 rm -rf .github/template.yml

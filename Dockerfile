@@ -14,7 +14,7 @@ WORKDIR /app
 
 # Copy your project files into the container
 COPY requirements.txt Makefile ./
-COPY ./ids706_python_template /app/ids706_python_template
+COPY word_counter /app/ids706_python_template
 
 # Create a virtual environment and install dependencies
 RUN pip install --disable-pip-version-check --no-cache-dir -r requirements.txt

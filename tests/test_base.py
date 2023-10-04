@@ -1,5 +1,5 @@
-from ids706_python_template.base import NAME
+from word_counter.base import NAME
 
 
 def test_base():
-    assert NAME == "ids706_python_template"
+    assert NAME == "word_counter"
